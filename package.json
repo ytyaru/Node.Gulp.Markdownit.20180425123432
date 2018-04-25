@@ -1,0 +1,41 @@
+{
+  "name": "Gulp.Install.201804240100000",
+  "version": "1.0.0",
+  "description": "Gulp環境構築する。",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.7",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-stylus": "^2.7.0",
+    "webpack": "^4.6.0",
+    "webpack-stream": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ytyaru/Gulp.Install.20180424100000.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ytyaru/Gulp.Install.20180424100000/issues"
+  },
+  "homepage": "https://github.com/ytyaru/Gulp.Install.20180424100000#readme",
+  "dependencies": {
+    "highlightjs": "^9.10.0",
+    "markdown-it": "^8.4.1",
+    "markdown-it-kbd": "^1.1.1",
+    "markdown-it-ruby": "^0.1.1"
+  }
+}
