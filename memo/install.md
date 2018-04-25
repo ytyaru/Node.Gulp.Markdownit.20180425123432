@@ -29,7 +29,13 @@ $ ./install.sh
 + markdown-it@8.4.1|added 7 packages in 45.85s
 + markdown-it-ruby@0.1.1|added 1 package in 39.644s
 + markdown-it-kbd@1.1.1|added 1 package in 41.266s
++ markdown-it-named-headers@0.0.4|added 2 packages in 40.05s
++ markdown-it-anchor@4.0.0|added 1 package in 39.759s
 
 28+16+24+13+15+107+47+44+37+45+40+43+44
 +40+45+39+41
 =668
+
+
+
+Module not found: Error: Can't resolve 'markdown-it-named-headings' in '/tmp/work/Node.Gulp.Markdownit.20180425123432/src/js'

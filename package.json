@@ -35,6 +35,7 @@
   "dependencies": {
     "highlightjs": "^9.10.0",
     "markdown-it": "^8.4.1",
+    "markdown-it-anchor": "^4.0.0",
     "markdown-it-kbd": "^1.1.1",
     "markdown-it-ruby": "^0.1.1"
   }

@@ -9,6 +9,8 @@ export default class Markdown {
 ##### H5
 ###### H6
 
+[日本語名アンカー](#日本語名アンカー)
+
 {ruby base|rubytext}
 
 {超電磁砲|レールガン}。
@@ -16,6 +18,8 @@ export default class Markdown {
 [[ X ]]
 
 [[ Ctrl + X ]]
+
+[[ [[Ctrl]] + [[X]] ]]
 
 \`\`\`js
 export class MyClass {
@@ -33,6 +37,22 @@ E|F
 * A
 * B
 
+a
+
+1. A
+1. B
+
+b
+
+A. A
+A. B
+
+c
+
+a. A
+a. B
+
+# 日本語名アンカー
 
 `;
         this._CreateParser();
@@ -58,11 +78,11 @@ E|F
     */
     _CreateParser() {
         this._parser = require('markdown-it')(this._CreateMarkdownItOption())
+            .use(require('markdown-it-anchor'), this._CreateAnchorOption())
             .use(require('markdown-it-ruby'))
             .use(require('markdown-it-kbd'))
     }
     _CreateMarkdownItOption() {
-        //const hljs = require('highlight.js'); // https://highlightjs.org/
         const hljs = require('highlightjs'); // https://highlightjs.org/
         hljs.initHighlightingOnLoad();
         return {
@@ -77,6 +97,18 @@ E|F
             }
             return '<pre class="hljs"><code>' + this.Parser.utils.escapeHtml(str) + '</code></pre>';
             }
+        }
+    }
+    _CreateAnchorOption() {
+        //return {};
+        return {
+            slugify: function (header) {
+                return encodeURI(header.trim()
+                    .toLowerCase()
+                    .replace(/[\]\[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\\\^\_\{\|\}\~]/g, '')
+                    .replace(/\s+/g, '-')) // Replace spaces with hyphens
+                    .replace(/\-+$/, ''); // Replace trailing hyphen
+              }
         }
     }
 }

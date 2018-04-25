@@ -14,7 +14,7 @@ var Markdown = function () {
 
         this._parser = this._CreateParser();
         //this._source = "# マークダウン";
-        this._source = '# \u30DE\u30FC\u30AF\u30C0\u30A6\u30F3\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\n{ruby base|rubytext}\n\n{\u8D85\u96FB\u78C1\u7832|\u30EC\u30FC\u30EB\u30AC\u30F3}\u3002\n\n[[ X ]]\n\n[[ Ctrl + X ]]\n\n```js\nexport class MyClass {\n    constructor () {\n        this.value = 100;\n    }\n}\n```\n\nA|B\n-|-\nC|D\nE|F\n\n* A\n* B\n\n\n';
+        this._source = '# \u30DE\u30FC\u30AF\u30C0\u30A6\u30F3\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\n[\u65E5\u672C\u8A9E\u540D\u30A2\u30F3\u30AB\u30FC](#\u65E5\u672C\u8A9E\u540D\u30A2\u30F3\u30AB\u30FC)\n\n{ruby base|rubytext}\n\n{\u8D85\u96FB\u78C1\u7832|\u30EC\u30FC\u30EB\u30AC\u30F3}\u3002\n\n[[ X ]]\n\n[[ Ctrl + X ]]\n\n[[ [[Ctrl]] + [[X]] ]]\n\n```js\nexport class MyClass {\n    constructor () {\n        this.value = 100;\n    }\n}\n```\n\nA|B\n-|-\nC|D\nE|F\n\n* A\n* B\n\na\n\n1. A\n1. B\n\nb\n\nA. A\nA. B\n\nc\n\na. A\na. B\n\n# \u65E5\u672C\u8A9E\u540D\u30A2\u30F3\u30AB\u30FC\n\n';
         this._CreateParser();
     }
 
@@ -41,12 +41,11 @@ var Markdown = function () {
     }, {
         key: '_CreateParser',
         value: function _CreateParser() {
-            this._parser = require('markdown-it')(this._CreateMarkdownItOption()).use(require('markdown-it-ruby')).use(require('markdown-it-kbd'));
+            this._parser = require('markdown-it')(this._CreateMarkdownItOption()).use(require('markdown-it-anchor'), this._CreateAnchorOption()).use(require('markdown-it-ruby')).use(require('markdown-it-kbd'));
         }
     }, {
         key: '_CreateMarkdownItOption',
         value: function _CreateMarkdownItOption() {
-            //const hljs = require('highlight.js'); // https://highlightjs.org/
             var hljs = require('highlightjs'); // https://highlightjs.org/
             hljs.initHighlightingOnLoad();
             return {
@@ -58,6 +57,17 @@ var Markdown = function () {
                         } catch (__) {}
                     }
                     return '<pre class="hljs"><code>' + this.Parser.utils.escapeHtml(str) + '</code></pre>';
+                }
+            };
+        }
+    }, {
+        key: '_CreateAnchorOption',
+        value: function _CreateAnchorOption() {
+            //return {};
+            return {
+                slugify: function slugify(header) {
+                    return encodeURI(header.trim().toLowerCase().replace(/[\]\[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\\\^\_\{\|\}\~]/g, '').replace(/\s+/g, '-')) // Replace spaces with hyphens
+                    .replace(/\-+$/, ''); // Replace trailing hyphen
                 }
             };
         }
