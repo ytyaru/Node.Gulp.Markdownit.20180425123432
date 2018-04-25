@@ -9,7 +9,11 @@ export default class Markdown {
 ##### H5
 ###### H6
 
+{ruby base|rubytext}
+
 {超電磁砲|レールガン}。
+
+[[ X ]]
 
 [[ Ctrl + X ]]
 
@@ -54,8 +58,8 @@ E|F
     */
     _CreateParser() {
         this._parser = require('markdown-it')(this._CreateMarkdownItOption())
-//            .use(require('markdown-it-ruby'))
-//            .use(require('markdown-it-kbd'))
+            .use(require('markdown-it-ruby'))
+            .use(require('markdown-it-kbd'))
     }
     _CreateMarkdownItOption() {
         //const hljs = require('highlight.js'); // https://highlightjs.org/

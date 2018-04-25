@@ -14,7 +14,7 @@ var Markdown = function () {
 
         this._parser = this._CreateParser();
         //this._source = "# マークダウン";
-        this._source = '# \u30DE\u30FC\u30AF\u30C0\u30A6\u30F3\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\n{\u8D85\u96FB\u78C1\u7832|\u30EC\u30FC\u30EB\u30AC\u30F3}\u3002\n\n[[ Ctrl + X ]]\n\n```js\nexport class MyClass {\n    constructor () {\n        this.value = 100;\n    }\n}\n```\n\nA|B\n-|-\nC|D\nE|F\n\n* A\n* B\n\n\n';
+        this._source = '# \u30DE\u30FC\u30AF\u30C0\u30A6\u30F3\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\n{ruby base|rubytext}\n\n{\u8D85\u96FB\u78C1\u7832|\u30EC\u30FC\u30EB\u30AC\u30F3}\u3002\n\n[[ X ]]\n\n[[ Ctrl + X ]]\n\n```js\nexport class MyClass {\n    constructor () {\n        this.value = 100;\n    }\n}\n```\n\nA|B\n-|-\nC|D\nE|F\n\n* A\n* B\n\n\n';
         this._CreateParser();
     }
 
@@ -41,9 +41,7 @@ var Markdown = function () {
     }, {
         key: '_CreateParser',
         value: function _CreateParser() {
-            this._parser = require('markdown-it')(this._CreateMarkdownItOption());
-            //            .use(require('markdown-it-ruby'))
-            //            .use(require('markdown-it-kbd'))
+            this._parser = require('markdown-it')(this._CreateMarkdownItOption()).use(require('markdown-it-ruby')).use(require('markdown-it-kbd'));
         }
     }, {
         key: '_CreateMarkdownItOption',
