@@ -16,6 +16,7 @@ https://www.npmjs.com/package/markdown-it-incremental-dom
 
 https://www.npmjs.com/package/markdown-it-github-headings
 ただし日本語タイトルをURLエンコーディングしてくれないと思う
+アンカーへのリンクが効かなくなった。
 
 属性設定
 https://www.npmjs.com/package/markdown-it-decorate
