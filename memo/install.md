@@ -1,10 +1,13 @@
 # インストール・メモ
 
-* 日時: 2018-04-24
-* 所要時間: 約12分(約668s)
-* ファイルサイズ: 57.2 MiB (ディスク上サイズ:  MiB)
-* ファイルサイズ: 92.0 MiB (ディスク上サイズ: 172.6 MiB)
-* ファイルサイズ: 92.0 MiB (ディスク上サイズ: 172.6 MiB)
+* 日時: 2018-04-266666
+* 所要時間: 約14分(約841s)
+
+時点|ファイルサイズ|ディスク上サイズ
+----|--------------|----------------
+gulp+stylus,pug|57.2|?
++webpack+babel|92.0|172.6
++highlightjs+markdown-it+plugins|109.7|187.3
 
 ```sh
 $ ./install.sh
@@ -37,6 +40,3 @@ $ ./install.sh
 28+16+24+13+15+107+47+44+37+45+40+43+44
 +40+45+39+4140+39+42+52
 
-
-
-Module not found: Error: Can't resolve 'markdown-it-named-headings' in '/tmp/work/Node.Gulp.Markdownit.20180425123432/src/js'
