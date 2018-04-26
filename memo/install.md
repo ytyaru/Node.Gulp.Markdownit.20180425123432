@@ -31,10 +31,11 @@ $ ./install.sh
 + markdown-it-kbd@1.1.1|added 1 package in 41.266s
 + markdown-it-named-headers@0.0.4|added 2 packages in 40.05s
 + markdown-it-anchor@4.0.0|added 1 package in 39.759s
++ markdown-it-multimd-table@3.1.2|added 3 packages in 42.164s
++ markdown-it-deflist@2.0.3|added 1 package in 52.112s
 
 28+16+24+13+15+107+47+44+37+45+40+43+44
-+40+45+39+41
-=668
++40+45+39+4140+39+42+52
 
 
 

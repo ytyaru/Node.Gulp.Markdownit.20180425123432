@@ -29,10 +29,118 @@ export class MyClass {
 }
 \`\`\`
 
+## 定義リスト（dl, dt, dd）
+
+### 単一行
+
+Term 1
+: Definition 1
+Term 2 with *inline markup*
+: Definition 2
+
+### 複数行
+
+Term 1
+:   Definition
+with lazy continuation.
+
+    Second paragraph of the definition.
+
+### 複数dd
+
+Term 1
+  ~ Definition 1
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+### 複数dd
+
+Term 1
+  :    paragraph
+Term 2
+  :     code block
+
+abc.
+
+Term 1
+  :    paragraph
+Term 2
+  :     code block
+
+        $ cd
+        $ echo
+
+
+## テーブル
+
+### 列結合
+
+A|B|C
+-|-|-
+1|2|3
+4|5|
+6||
+|7|
+||8
+9||10
+|11|12
+
+### 行結合
+
+First header | Second header
+-------------|---------------
+List:        | More  \
+- over       | data  \
+- several    |       \
+- lines      |
+
+### 行結合(バックスラッシュ2つ)
+
+First header | Second header
+-------------|---------------
+List:        | More  \\
+- over       | data  \\
+- several    |       \\
+- lines      |
+
+### 行結合(list)
+
+First header | Second header
+-------------|---------------
+List:        | More  \\
+1. over      | data  \\
+1. several   |       \\
+1. lines     |
+
+### 行結合(左側)
+
+First header | Second header
+-------------|---------------
+title \\     | List:
+      \\     | 1. over
+      \\     | 1. several
+             | 1. lines
+
+### 行結合(list)
+
+First header | Second header
+-------------|---------------
+List:        | More  \\
+1. [google]  | data  \\
+1. several   |       \\
+1. lines     |
+
+[google]: https://www.google.co.jp
+
+### 単純テーブル
+
 A|B
 -|-
 C|D
 E|F
+
+## リスト
 
 * A
 * B
@@ -51,6 +159,10 @@ c
 
 a. A
 a. B
+
+末尾にスペース二つで  
+改行  
+\`<br/>\`  
 
 # 日本語名アンカー
 
@@ -81,6 +193,8 @@ a. B
             .use(require('markdown-it-anchor'), this._CreateAnchorOption())
             .use(require('markdown-it-ruby'))
             .use(require('markdown-it-kbd'))
+            .use(require('markdown-it-deflist'))
+            .use(require('markdown-it-multimd-table'), {enableMultilineRows: true})
     }
     _CreateMarkdownItOption() {
         const hljs = require('highlightjs'); // https://highlightjs.org/
