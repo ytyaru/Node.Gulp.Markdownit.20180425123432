@@ -1,16 +1,8 @@
 # このソフトウェアについて
 
-Gulp環境構築する。
+Node.jsでマークダウンをパースする環境構築
 
-HTML(pug),CSS(stylus),JS(ES6..)の自動ビルド環境をつくる。
-
-# 概要
-
-メタ言語|出力言語
---------|--------
-stylus|css
-pug|html
-ES6(webpack,babel)|js
+* [前回](https://github.com/ytyaru/Gulp.Install.20180425070000)を継承した環境
 
 # 使い方
 
@@ -20,17 +12,12 @@ ES6(webpack,babel)|js
 $ cd (このディレクトリ)
 $ npm i
 ```
-または以下。
-```sh
-$ cd (このディレクトリ)
-$ ./install.sh
-```
 
 * package.json
 * node_modules/
 * dst/
 
-ファイルサイズ約92MB。所要時間約9分。[※](memo/install.md)
+[※](memo/install.md)
 
 ## 起動
 
@@ -44,10 +31,19 @@ $ gulp
 
 なお、`./dst/`配下のpug,stylus,jsのソースコードが変更されるたびに自動でビルド＆ブラウザ更新される。詳細は[gulpfile.js](gulpfile.js)参照。
 
-### トランスパイル
+## ブラウザ自動更新が残念
 
-* `./src/stylus/**/*.styl`→`./dst/css/*`
-* `./src/pug/**/*.pug`→`./*`
+なぜかうまく反映されない。原因不明。最初はブラウザのキャッシュが残っているせいかと思ったが違うと思う。ブラウザのメニューから履歴削除しても反映されなかったから。また、再起動しても同様。`gulp`コマンド実行後、ローカルサーバを`Ctrl+C`で終了し、再起動しても変わらず。
+
+試行錯誤しているうちに、反映される手順をみつけた。それが以下。だが、無駄な操作が多くて時間がかかる。
+
+1. `./src/js/`など、変更されたら再ビルドする設定になっているファイルをvimで開く
+1. `wq`で閉じる
+1. ブラウザのリロード完了を待つ（20秒）
+1. 上記を3回ほどくりかえす
+1. 反映される
+
+なぜか何度も書込をくりかえさねば反映されない。謎。
 
 ### 起動
 
@@ -71,7 +67,7 @@ vimでインデント設定してやらないとエラーになる。[※](memo/
             * npm 5.6.0
                 * n 2.1.7
                 * Gulp 3.9.1
-                    * work系
+                    * 他
                         * gulp-plumber 1.2.0
                         * gulp-notify 3.2.0
                         * browser-sync 2.23.7
@@ -87,23 +83,14 @@ vimでインデント設定してやらないとエラーになる。[※](memo/
                         * babel-env 2.4.1
                         * babel-polyfill 6.26.0
                         * babel-preset-env 1.6.1
-
-## node_modules/ にインストールするもの
-
-モジュール|説明
-----------|----
-gulp-stylus|stylus→css
-gulp-sass|sass→css
-gulp-pug|pug→html
-gulp-plumber|sassとpugの変換でエラーが出た場合の強制終了を防止
-gulp-notify|デスクトップ通知
-browser-sync|ブラウザの起動、ファイル変更時リロード
-webpack|JSファイル結合
-webpack-stream|gulpでwebpackを使うために必要
-gulp-babel|gulpでbabelを使うために必要
-babel|JSをES6からES5へトランスパイルする
-babel-preset-env|ブラウザやNode.jsに合わせてネイティブサポートしていない構文のみトランスパイルする。([将来2.0正式版になり`"useBuiltIns": "usage"できれば` babel-polyfill, babel-plugin-transform-runtime不要](https://qiita.com/shisama/items/88080011bbc69e3e620b))
-babel-polyfill|Promiseなどの機能が未実装なら穴埋めする
+                    * Markdown
+                        * highlightjs 9.10.0
+                        * markdown-it 8.4.1
+                        * markdown-it-anchor 4.0.0
+                        * markdown-it-deflist 2.0.3
+                        * markdown-it-kbd 1.1.1
+                        * markdown-it-multimd-table 3.1.2
+                        * markdown-it-ruby 0.1.1
 
 # ライセンス
 
