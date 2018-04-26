@@ -190,8 +190,7 @@ a. B
     */
     _CreateParser() {
         this._parser = require('markdown-it')(this._CreateMarkdownItOption())
-            .use(require('markdown-it-github-headings'))
-            //.use(require('markdown-it-anchor'), this._CreateAnchorOption())
+            .use(require('markdown-it-anchor'), this._CreateAnchorOption())
             .use(require('markdown-it-ruby'))
             .use(require('markdown-it-kbd'))
             .use(require('markdown-it-deflist'))
